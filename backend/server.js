@@ -1,8 +1,9 @@
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.use(cors());
 app.use(express.json());
@@ -10,8 +11,8 @@ app.use(express.json());
 let tasks = [
   {
     id: '1',
-    title: 'Welcome to To-Do Manager',
-    description: 'This is your first task. You can edit, delete, or drag it between columns.',
+    title: 'Welcome to Your To-Do Manager',
+    description: 'This is your first task. You can edit, delete or drag it between columns.',
     status: 'todo',
     priority: 'medium',
     dueDate: '2024-01-20',
@@ -268,8 +269,20 @@ app.use((error, req, res, next) => {
   });
 });
 
+
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+  console.log('🚀 To-Do Manager Backend Server Started!');
+  console.log(`📍 Port: ${PORT}`);
+  console.log(`🌐 URL: http://localhost:${PORT}`);
   console.log(`📝 To-Do API: http://localhost:${PORT}/api`);
   console.log(`❤️  Health check: http://localhost:${PORT}/api/health`);
+  console.log('');
+  console.log('📋 Available Endpoints:');
+  console.log(`   GET  http://localhost:${PORT}/api/health`);
+  console.log(`   GET  http://localhost:${PORT}/api/tasks`);
+  console.log(`   POST http://localhost:${PORT}/api/tasks`);
+  console.log(`   PUT  http://localhost:${PORT}/api/tasks/:id`);
+  console.log(`   DEL  http://localhost:${PORT}/api/tasks/:id`);
+  console.log('');
+  console.log('✅ Server is ready to accept requests!');
 });
