@@ -11,11 +11,11 @@ app.use(express.json());
 let tasks = [
   {
     id: '1',
-    title: 'Welcome to Your To-Do Manager',
-    description: 'This is your first task. You can edit, delete or drag it between columns.',
+    title: 'My To Do Manager',
+    description: 'Implement functions on your app',
     status: 'todo',
     priority: 'medium',
-    dueDate: '2024-01-20',
+    dueDate: '2025-10-10',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   },
@@ -25,17 +25,17 @@ let tasks = [
     description: 'Implement drag and drop functionality in the to-do app',
     status: 'in-progress',
     priority: 'high',
-    dueDate: '2024-01-18',
+    dueDate: '2025-10-15',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   },
   {
     id: '3',
     title: 'Complete project documentation',
-    description: 'Write comprehensive documentation for the to-do application',
+    description: 'Write comprehensive documentation for my to-do application',
     status: 'done',
     priority: 'low',
-    dueDate: '2024-01-15',
+    dueDate: '2025-10-11',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   }
@@ -271,18 +271,18 @@ app.use((error, req, res, next) => {
 
 
 app.listen(PORT, () => {
-  console.log('🚀 To-Do Manager Backend Server Started!');
-  console.log(`📍 Port: ${PORT}`);
-  console.log(`🌐 URL: http://localhost:${PORT}`);
-  console.log(`📝 To-Do API: http://localhost:${PORT}/api`);
-  console.log(`❤️  Health check: http://localhost:${PORT}/api/health`);
+  console.log('   To-Do Manager Backend Server Started!');
+  console.log(`   Port: ${PORT}`);
+  console.log(`   URL: http://localhost:${PORT}`);
+  console.log(`   To-Do API: http://localhost:${PORT}/api`);
+  console.log(`   Health check: http://localhost:${PORT}/api/health`);
   console.log('');
-  console.log('📋 Available Endpoints:');
+  console.log('  Available Endpoints:');
   console.log(`   GET  http://localhost:${PORT}/api/health`);
   console.log(`   GET  http://localhost:${PORT}/api/tasks`);
   console.log(`   POST http://localhost:${PORT}/api/tasks`);
   console.log(`   PUT  http://localhost:${PORT}/api/tasks/:id`);
   console.log(`   DEL  http://localhost:${PORT}/api/tasks/:id`);
   console.log('');
-  console.log('✅ Server is ready to accept requests!');
+  console.log('Server is ready to accept requests!');
 });
