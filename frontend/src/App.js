@@ -9,7 +9,7 @@ import ThemeToggle from './components/ThemeToggle';
 
 import './App.css';
 
-const API_BASE = 'http://localhost:5001/api'; // Changed to 5001
+const API_BASE = 'http://localhost:5001/api'; 
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -24,7 +24,6 @@ function App() {
   });
   const [theme, setTheme] = useState('light');
 
-  // Fetch tasks function with useCallback to prevent infinite re-renders
   const fetchTasks = useCallback(async () => {
     try {
       setLoading(true);
@@ -50,7 +49,6 @@ function App() {
     }
   }, [filters.status, filters.priority, filters.search]);
 
-  // Filter tasks function
   const filterTasks = useCallback(() => {
     let filtered = tasks;
 
@@ -73,7 +71,6 @@ function App() {
     return filtered;
   }, [tasks, filters.status, filters.priority, filters.search]);
 
-  // Fetch tasks on component mount and when filters change
   useEffect(() => {
     fetchTasks();
   }, [fetchTasks]);
@@ -184,8 +181,8 @@ function App() {
       <div className="container">
         <header className="header">
           <div className="header-content">
-            <h1>To-Do Manager</h1>
-            <p>Organize your tasks efficiently</p>
+            <h1>Your To Do Manager</h1>
+            <p>Organise your tasks efficiently</p>
           </div>
           <div className="header-actions">
             <ThemeToggle theme={theme} onToggle={toggleTheme} />
