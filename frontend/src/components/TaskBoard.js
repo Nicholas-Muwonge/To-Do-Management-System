@@ -78,7 +78,8 @@ const TaskBoard = ({ tasks, onEdit, onDelete }) => {
                 {getTasksByStatus(column.id).length === 0 && (
                   <div className="empty-state">
                     <ClipboardList size={48} />
-                    <p>No tasks</p>
+                    <p>No tasks in {column.title.toLowerCase()}</p>
+                    <p className="text-muted">Drag tasks here or create new ones</p>
                   </div>
                 )}
               </div>

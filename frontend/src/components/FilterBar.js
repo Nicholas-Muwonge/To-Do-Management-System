@@ -1,7 +1,7 @@
 import React from 'react';
-import { Search, Filter } from 'lucide-react';
+import { Search, Filter, RefreshCw } from 'lucide-react';
 
-const FilterBar = ({ filters, onFilterChange }) => {
+const FilterBar = ({ filters, onFilterChange, onRefresh, loading }) => {
   const handleFilterChange = (key, value) => {
     onFilterChange({
       ...filters,
@@ -11,34 +11,27 @@ const FilterBar = ({ filters, onFilterChange }) => {
 
   const clearFilters = () => {
     onFilterChange({
-      status: '',
-      priority: '',
+      status: 'all',
+      priority: 'all',
       search: ''
     });
   };
 
-  const hasActiveFilters = filters.status || filters.priority || filters.search;
+  const hasActiveFilters = filters.status !== 'all' || filters.priority !== 'all' || filters.search;
 
   return (
     <div className="filter-bar">
-      <div className="search-input-container" style={{ position: 'relative', flex: 1 }}>
+      <div className="search-input-container">
         <Search 
           size={20} 
-          style={{
-            position: 'absolute',
-            left: '12px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            color: 'var(--text-secondary)'
-          }} 
+          className="search-icon"
         />
         <input
           type="text"
-          placeholder="Search tasks..."
+          placeholder="Search tasks by title or description..."
           value={filters.search}
           onChange={(e) => handleFilterChange('search', e.target.value)}
           className="search-input"
-          style={{ paddingLeft: '40px' }}
         />
       </div>
 
@@ -47,7 +40,7 @@ const FilterBar = ({ filters, onFilterChange }) => {
         onChange={(e) => handleFilterChange('status', e.target.value)}
         className="filter-select"
       >
-        <option value="">All Status</option>
+        <option value="all">All Status</option>
         <option value="todo">To Do</option>
         <option value="in-progress">In Progress</option>
         <option value="done">Done</option>
@@ -58,14 +51,28 @@ const FilterBar = ({ filters, onFilterChange }) => {
         onChange={(e) => handleFilterChange('priority', e.target.value)}
         className="filter-select"
       >
-        <option value="">All Priority</option>
+        <option value="all">All Priority</option>
         <option value="high">High</option>
         <option value="medium">Medium</option>
         <option value="low">Low</option>
       </select>
 
+      <button 
+        className="btn btn-secondary" 
+        onClick={onRefresh}
+        disabled={loading}
+        title="Refresh tasks"
+      >
+        <RefreshCw size={16} className={loading ? 'spinning' : ''} />
+        Refresh
+      </button>
+
       {hasActiveFilters && (
-        <button className="btn btn-secondary" onClick={clearFilters}>
+        <button 
+          className="btn btn-secondary" 
+          onClick={clearFilters}
+          title="Clear all filters"
+        >
           <Filter size={16} />
           Clear Filters
         </button>
