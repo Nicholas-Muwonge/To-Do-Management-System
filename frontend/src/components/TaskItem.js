@@ -10,23 +10,18 @@ const TaskItem = ({ task, onEdit, onDelete }) => {
     const tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
 
-    // Check if date is today
     if (date.toDateString() === today.toDateString()) {
       return 'Today';
     }
-    
-    // Check if date is tomorrow
-    if (date.toDateString() === tomorrow.toDateString()) {
+        if (date.toDateString() === tomorrow.toDateString()) {
       return 'Tomorrow';
     }
 
-    // Check if date is in the past
     if (date < today) {
       const daysAgo = Math.floor((today - date) / (1000 * 60 * 60 * 24));
       return `${daysAgo} day${daysAgo > 1 ? 's' : ''} ago`;
     }
 
-    // Future date
     return date.toLocaleDateString('en-US', { 
       month: 'short', 
       day: 'numeric',
