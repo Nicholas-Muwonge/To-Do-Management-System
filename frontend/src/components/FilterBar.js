@@ -21,10 +21,9 @@ const FilterBar = ({ filters, onFilterChange, onRefresh, loading }) => {
 
   return (
     <div className="filter-bar">
-      <div className="search-input-container">
         <Search 
           size={20} 
-          className="search-icon"
+
         />
         <input
           type="text"
@@ -33,7 +32,6 @@ const FilterBar = ({ filters, onFilterChange, onRefresh, loading }) => {
           onChange={(e) => handleFilterChange('search', e.target.value)}
           className="search-input"
         />
-      </div>
 
       <select
         value={filters.status}
