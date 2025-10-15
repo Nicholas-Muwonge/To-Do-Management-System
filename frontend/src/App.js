@@ -181,8 +181,8 @@ function App() {
       <div className="container">
         <header className="header">
           <div className="header-content">
-            <h1>Your To Do Manager</h1>
-            <p>Organise your tasks efficiently</p>
+            <h1>My Task System</h1>
+            <p> Boost your efficiency</p>
           </div>
           <div className="header-actions">
             <ThemeToggle theme={theme} onToggle={toggleTheme} />
